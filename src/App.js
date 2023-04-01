@@ -32,7 +32,26 @@ function App() {
         <p className="charaterText--style">12 characters</p>
       </div>
       <div className="passwordCheckboxs--container">
-        Password Checkboxes Container
+        <label htmlFor="symbolCheckbox">
+          <input type="checkbox" name="symbolCheckbox" />
+          Include Symbols (@#$%)
+        </label>
+        <label htmlFor="numberCheckbox">
+          <input type="checkbox" name="numberCheckbox" />
+          Include Numbers (1234)
+        </label>
+        <label htmlFor="lowerCaseCheckbox">
+          <input type="checkbox" name="lowerCaseCheckbox" />
+          Include Lowercase Characters (abcd)
+        </label>
+        <label htmlFor="upperCaseCheckbox">
+          <input type="checkbox" name="upperCaseCheckbox" />
+          Include UpperCase Characters (ABCD)
+        </label>
+        <label htmlFor="excludeCheckbox">
+          <input type="checkbox" name="excludeCheckbox" />
+          Exclude Similar Characters (ABCD)
+        </label>
       </div>
     </main>
   );
