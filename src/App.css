@@ -9,6 +9,22 @@ div {
   margin-bottom: 20px;
 }
 
+.passwordInput--container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input--style {
+  border-radius: 10px;
+  height: 30px;
+  padding: 5px;
+}
+
+.copyIcon--style {
+  height: 30px;
+}
+
 
 @media only screen and (min-width: 600px){
   main {
