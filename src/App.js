@@ -1,7 +1,7 @@
 import './App.css';
 
 /** TODO
- * Setup the background color
+ * Setup the background color - DONE
  * Setup general layout (input, slider, checkboxs)
  * Setup mobile and desktop view
  * Setup the structure elements
