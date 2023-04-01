@@ -16,6 +16,9 @@ import CopyIcon from './assets/copy.png';
  * etc. for each checkbox
  *
  * @returns
+ * 
+ * Resources:
+ * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_rangeslider
  */
 function App() {
   return (
@@ -25,7 +28,8 @@ function App() {
         <img src={CopyIcon} className="copyIcon--style" alt="Clickable button to copy password to clipboard" />
       </div>
       <div className="passwordSlider--container">
-        Password Slider Container
+        <input type="range" min="1" max="15" value="9" className="slider" />
+        <p className="charaterText--style">12 characters</p>
       </div>
       <div className="passwordCheckboxs--container">
         Password Checkboxes Container
