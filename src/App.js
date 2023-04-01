@@ -2,8 +2,8 @@ import "./App.css";
 
 /** TODO
  * Setup the background color - DONE
- * Setup general layout (input, slider, checkboxs)
- * Setup mobile and desktop view
+ * Setup general layout (input, slider, checkboxs) - DONE
+ * Setup mobile and desktop view - DONE
  * Setup the structure elements
  * Add general styles
  * Test responsive design
