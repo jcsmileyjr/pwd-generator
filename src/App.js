@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 
 /** TODO
  * Setup the background color - DONE
@@ -13,14 +13,22 @@ import './App.css';
  * Link Slider and input functionality
  * "Include Symbol" functionality
  * etc. for each checkbox
- *  
- * @returns 
+ *
+ * @returns
  */
 function App() {
   return (
-    <div className="App">
-      Hello World
-    </div>
+    <main className="App">
+      <div className="passwordInput--container">
+        Password Input Container
+      </div>
+      <div className="passwordSlider--container">
+        Password Slider Container
+      </div>
+      <div className="passwordCheckboxs--container">
+        Password Checkboxes Container
+      </div>
+    </main>
   );
 }
 
