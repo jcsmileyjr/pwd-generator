@@ -20,6 +20,7 @@ import CopyIcon from './assets/copy.png';
  * 
  * Resources:
  * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_rangeslider
+ * https://moderncss.dev/pure-css-custom-checkbox-style/
  */
 function App() {
   return (
@@ -35,23 +36,23 @@ function App() {
       <div className="passwordCheckboxs--container">
         <label htmlFor="symbolCheckbox">
           <input type="checkbox" name="symbolCheckbox" />
-          Include Symbols (@#$%)
+          Include Symbols <span className="charater--style">(@#$%)</span>
         </label>
         <label htmlFor="numberCheckbox">
           <input type="checkbox" name="numberCheckbox" />
-          Include Numbers (1234)
+          Include Numbers <span className="charater--style">(1234)</span>
         </label>
         <label htmlFor="lowerCaseCheckbox">
           <input type="checkbox" name="lowerCaseCheckbox" />
-          Include Lowercase Characters (abcd)
+          Include Lowercase Characters <span className="charater--style">(abcd)</span> 
         </label>
         <label htmlFor="upperCaseCheckbox">
           <input type="checkbox" name="upperCaseCheckbox" />
-          Include UpperCase Characters (ABCD)
+          Include UpperCase Characters <span className="charater--style">(ABCD)</span> 
         </label>
         <label htmlFor="excludeCheckbox">
           <input type="checkbox" name="excludeCheckbox" />
-          Exclude Similar Characters (ABCD)
+          Exclude Similar Characters <span className="charater--style">(ABCD)</span> 
         </label>
       </div>
     </main>

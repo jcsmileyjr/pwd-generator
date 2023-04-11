@@ -14,6 +14,9 @@ label {
   font-size: 1rem;
   font-weight: bold;
   line-height: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .passwordInput--container {
@@ -77,10 +80,33 @@ label {
   cursor: pointer;
 }
 
+.charaterText--style {
+  font-weight: bold;
+}
+
 .passwordCheckboxs--container {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.charater--style {
+  font-weight: 400;
+}
+
+/*Hide the native checkbox input styling*/
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  color: green;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
 }
 
 @media only screen and (min-width: 600px){
