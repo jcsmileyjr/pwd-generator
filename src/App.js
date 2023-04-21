@@ -1,5 +1,6 @@
 import "./App.css";
 import CopyIcon from './assets/copy.png';
+import {useState} from "react";
 
 /** TODO
  * Setup the background color - DONE
@@ -23,6 +24,13 @@ import CopyIcon from './assets/copy.png';
  * https://moderncss.dev/pure-css-custom-checkbox-style/
  */
 function App() {
+
+  const [symbolCheckbox, setSymbolCheckbox] = useState(false);
+  const [numberCheckbox, setNumberCheckbox] = useState(false);
+  const [lowerCaseCheckbox, setLowerCaseCheckbox] = useState(false);
+  const [upperCaseCheckbox, setUpperCaseCheckbox] = useState(false);
+  const [excludeCheckbox, setExcludeCheckbox] = useState(false);
+
   return (
     <main>
       <div className="passwordInput--container">
@@ -35,23 +43,23 @@ function App() {
       </div>
       <div className="passwordCheckboxs--container">
         <label htmlFor="symbolCheckbox">
-          <input type="checkbox" name="symbolCheckbox" />
-          Include Symbols <span className="charater--style">(@#$%)</span>
+          <input type="checkbox" name="symbolCheckbox" onChange={() => setSymbolCheckbox(!symbolCheckbox)} />
+          Include Symbols {symbolCheckbox}<span className="charater--style">(@#$%) </span>
         </label>
         <label htmlFor="numberCheckbox">
-          <input type="checkbox" name="numberCheckbox" />
+          <input type="checkbox" name="numberCheckbox" onChange={() => setNumberCheckbox(!numberCheckbox)} />
           Include Numbers <span className="charater--style">(1234)</span>
         </label>
         <label htmlFor="lowerCaseCheckbox">
-          <input type="checkbox" name="lowerCaseCheckbox" />
+          <input type="checkbox" name="lowerCaseCheckbox" onChange={() => setLowerCaseCheckbox(!lowerCaseCheckbox)} />
           Include Lowercase Characters <span className="charater--style">(abcd)</span> 
         </label>
         <label htmlFor="upperCaseCheckbox">
-          <input type="checkbox" name="upperCaseCheckbox" />
+          <input type="checkbox" name="upperCaseCheckbox" onChange={() => setUpperCaseCheckbox(!upperCaseCheckbox)} />
           Include UpperCase Characters <span className="charater--style">(ABCD)</span> 
         </label>
         <label htmlFor="excludeCheckbox">
-          <input type="checkbox" name="excludeCheckbox" />
+          <input type="checkbox" name="excludeCheckbox" onChange={() => setExcludeCheckbox(!excludeCheckbox)} />
           Exclude Similar Characters <span className="charater--style">(ABCD)</span> 
         </label>
       </div>
