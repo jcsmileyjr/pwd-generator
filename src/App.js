@@ -7,13 +7,14 @@ import {useState} from "react";
  * Setup general layout (input, slider, checkboxs) - DONE
  * Setup mobile and desktop view - DONE
  * Setup the structure elements - DONE
- * Add general styles
- * Test responsive design
- * Add initial tests (should pass)
+ * Test responsive design - DONE
+ * Add initial tests (should pass) - DONE
  *  1. That the UI elements are displayed
- * Add functional tests (should fail)
+ * Add functional tests (should fail) - DONE
  *  1. Test that the output changes
  * Add state - DONE
+ * Add general styles
+ *  1. Missing checkbox styles
  * functionality for input
  * Functionality for copy button
  * Add state and functionality for slider
@@ -32,11 +33,12 @@ function App() {
   const [lowerCaseCheckbox, setLowerCaseCheckbox] = useState(false);
   const [upperCaseCheckbox, setUpperCaseCheckbox] = useState(false);
   const [excludeCheckbox, setExcludeCheckbox] = useState(false);
+  const [displayedPassword, setDisplayedPassword] = useState("HelloWorld")
 
   return (
     <main>
       <div className="passwordInput--container">
-        <input type="text" aria-label="view-password" className="input--style" name="pwd-viewer" />
+        <p type="text" aria-label="view-password" className="input--style">{displayedPassword}</p>
         <img src={CopyIcon} className="copyIcon--style" alt="Clickable button to copy password to clipboard" />
       </div>
       <div className="passwordSlider--container">

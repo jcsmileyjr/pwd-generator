@@ -22,3 +22,10 @@ describe("primary screen UI elements are there", () => {
     screen.getByRole("checkbox", {name: "Exclude Similar Characters (ABCD)"});
   });
 });
+
+xdescribe("the checkboxes changes the displayed password", () => {
+  test("that all checkboxes changes the displayed password based on its critera", () => {
+    render(<App />);
+    
+  });
+});
