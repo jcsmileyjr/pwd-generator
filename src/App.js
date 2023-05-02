@@ -1,6 +1,6 @@
 import "./App.css";
 import CopyIcon from './assets/copy.png';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 /** TODO
  * Setup the background color - DONE
@@ -15,9 +15,9 @@ import {useState} from "react";
  * Add state - DONE
  * Add general styles
  *  1. Missing checkbox styles
- * functionality for input
+ * Functionality for inputs
  * Functionality for copy button
- * Add state and functionality for slider
+ * Add state and functionality for slider - DONE
  * Link Slider and input functionality
  * "Include Symbol" functionality
  * etc. for each checkbox
@@ -25,6 +25,8 @@ import {useState} from "react";
  * Resources:
  * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_rangeslider
  * https://moderncss.dev/pure-css-custom-checkbox-style/
+ * https://relatablecode.com/how-to-make-a-simple-slider-component-in-react
+ * 
  */
 function App() {
 
@@ -33,7 +35,24 @@ function App() {
   const [lowerCaseCheckbox, setLowerCaseCheckbox] = useState(false);
   const [upperCaseCheckbox, setUpperCaseCheckbox] = useState(false);
   const [excludeCheckbox, setExcludeCheckbox] = useState(false);
-  const [displayedPassword, setDisplayedPassword] = useState("HelloWorld")
+  const [displayedPassword, setDisplayedPassword] = useState("HelloWorld");
+  const [characterLimit, setCharacterLimit] = useState(10);
+
+  useEffect(() => {
+    // Returns a base word based on the character limit and revised based on the value of checkboxes 
+    const updatedPassword = () => {
+      let baseword = 'excommunication';
+      console.log(baseword.length);
+      //return number of letters based on the characterLimit state
+      baseword = baseword.substring(0, characterLimit);
+  
+      setDisplayedPassword(baseword);
+    }
+
+    updatedPassword();
+    
+  },[symbolCheckbox, numberCheckbox, lowerCaseCheckbox, upperCaseCheckbox, excludeCheckbox, characterLimit])
+
 
   return (
     <main>
@@ -42,8 +61,8 @@ function App() {
         <img src={CopyIcon} className="copyIcon--style" alt="Clickable button to copy password to clipboard" />
       </div>
       <div className="passwordSlider--container">
-        <input type="range" aria-label="password character range" min="1" max="15" value="9" className="slider" name="pwd-slider" />
-        <p className="charaterText--style">12 characters</p>
+        <input type="range" aria-label="password character range" min="1" max="15" className="slider" name="pwd-slider" onChange={(e) => setCharacterLimit(e.target.value)} value={characterLimit} />
+        <p className="charaterText--style">{characterLimit} characters</p>
       </div>
       <div className="passwordCheckboxs--container">
         <label htmlFor="symbolCheckbox">
