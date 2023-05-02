@@ -65,6 +65,10 @@ function App() {
         baseword = includeUpperCaseInPassword(baseword, randomIndex, excludedPositions);
       }
 
+      if(excludeCheckbox){
+        baseword = excludeSimilarCharactersInPassword(baseword);
+      }
+
       setDisplayedPassword(baseword);
     }
 
@@ -97,6 +101,19 @@ function App() {
   const includeUpperCaseInPassword = (originalBaseWord, randomIndex) => {
     let oldLetter = originalBaseWord[randomIndex].toUpperCase();
     return replacecharacter(originalBaseWord, randomIndex, oldLetter);
+  }
+
+  const excludeSimilarCharactersInPassword = (originalBaseWord) => {
+    let unsortedArrayOfBaseWord = originalBaseWord.split("");
+    let currentfound = [];
+
+    unsortedArrayOfBaseWord.filter((letter) => {
+      if(currentfound.includes(letter) === false){
+        currentfound.push(letter);
+      }
+    })
+
+    return currentfound.join("");
   }
 
   const replacecharacter = (originalWord, index, replacement) => {
