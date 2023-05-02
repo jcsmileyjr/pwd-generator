@@ -60,6 +60,12 @@ function App() {
         baseword = includeNumbersInPassword(baseword, randomIndex, excludedPositions);
       }
 
+      if(upperCaseCheckbox){
+        const randomIndex = checkRandomIndex(excludedPositions);
+        excludedPositions.push(randomIndex);
+        baseword = includeUpperCaseInPassword(baseword, randomIndex, excludedPositions);
+      }
+
       setDisplayedPassword(baseword);
     }
 
@@ -89,6 +95,11 @@ function App() {
     return replacecharacter(originalBaseWord, randomIndex, randomNumber);
   }
 
+  const includeUpperCaseInPassword = (originalBaseWord, randomIndex) => {
+    let oldLetter = originalBaseWord[randomIndex].toUpperCase();
+    return replacecharacter(originalBaseWord, randomIndex, oldLetter);
+  }
+
   const replacecharacter = (originalWord, index, replacement) => {
     return originalWord.substring(0, index) + replacement + originalWord.substring(index + 1);
   }
@@ -104,7 +115,7 @@ function App() {
         <img src={CopyIcon} className="copyIcon--style" alt="Clickable button to copy password to clipboard" />
       </div>
       <div className="passwordSlider--container">
-        <input type="range" aria-label="password character range" min="1" max="15" className="slider" name="pwd-slider" onChange={(e) => setCharacterLimit(e.target.value)} value={characterLimit} />
+        <input type="range" aria-label="password character range" min="5" max="15" className="slider" name="pwd-slider" onChange={(e) => setCharacterLimit(e.target.value)} value={characterLimit} />
         <p className="charaterText--style">{characterLimit} characters</p>
       </div>
       <div className="passwordCheckboxs--container">
