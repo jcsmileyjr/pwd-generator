@@ -17,7 +17,6 @@ describe("primary screen UI elements are there", () => {
     render(<App />);
     screen.getByRole("checkbox", {name: "Include Symbols (@#$%)"});
     screen.getByRole("checkbox", {name: "Include Numbers (1234)"});
-    screen.getByRole("checkbox", {name: "Include Lowercase Characters (abcd)"});
     screen.getByRole("checkbox", {name: "Include UpperCase Characters (ABCD)"});
     screen.getByRole("checkbox", {name: "Exclude Similar Characters (ABCD)"});
   });

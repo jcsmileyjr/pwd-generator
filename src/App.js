@@ -32,7 +32,6 @@ function App() {
 
   const [symbolCheckbox, setSymbolCheckbox] = useState(false);
   const [numberCheckbox, setNumberCheckbox] = useState(false);
-  const [lowerCaseCheckbox, setLowerCaseCheckbox] = useState(false);
   const [upperCaseCheckbox, setUpperCaseCheckbox] = useState(false);
   const [excludeCheckbox, setExcludeCheckbox] = useState(false);
   const [displayedPassword, setDisplayedPassword] = useState("Test");
@@ -71,7 +70,7 @@ function App() {
 
     updatedPassword();
     
-  },[symbolCheckbox, numberCheckbox, lowerCaseCheckbox, upperCaseCheckbox, excludeCheckbox, characterLimit])
+  },[symbolCheckbox, numberCheckbox, upperCaseCheckbox, excludeCheckbox, characterLimit])
 
   const checkRandomIndex = (excludeArray) => {
     let randomIndex;
@@ -126,10 +125,6 @@ function App() {
         <label htmlFor="numberCheckbox">
           <input type="checkbox" id="numberCheckbox" onChange={() => setNumberCheckbox(!numberCheckbox)} />
           Include Numbers <span className="charater--style">(1234)</span>
-        </label>
-        <label htmlFor="lowerCaseCheckbox">
-          <input type="checkbox" id="lowerCaseCheckbox" onChange={() => setLowerCaseCheckbox(!lowerCaseCheckbox)} />
-          Include Lowercase Characters <span className="charater--style">(abcd)</span> 
         </label>
         <label htmlFor="upperCaseCheckbox">
           <input type="checkbox" id="upperCaseCheckbox" onChange={() => setUpperCaseCheckbox(!upperCaseCheckbox)} />
