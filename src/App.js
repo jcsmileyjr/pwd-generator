@@ -47,12 +47,19 @@ function App() {
       //return number of letters based on the characterLimit state
       baseword = baseword.substring(0, characterLimit);
 
-      // if the symbol checkbox is checked, randomly change one position with a random symbol. Save that position to be exclude later
+      // if the symbol checkbox is checked, randomly change one position with a random symbol. Save that position to be excluded later
       if(symbolCheckbox){
-        let randomIndex = getRandomCharacter();
+        const randomIndex = checkRandomIndex(excludedPositions);
         excludedPositions.push(randomIndex);
-        baseword = includeSymbolinPassword(baseword, randomIndex);
+        baseword = includeSymbolInPassword(baseword, randomIndex);
       }
+
+      if(numberCheckbox){
+        const randomIndex = checkRandomIndex(excludedPositions);
+        excludedPositions.push(randomIndex);
+        baseword = includeNumbersInPassword(baseword, randomIndex, excludedPositions);
+      }
+
       setDisplayedPassword(baseword);
     }
 
@@ -60,19 +67,35 @@ function App() {
     
   },[symbolCheckbox, numberCheckbox, lowerCaseCheckbox, upperCaseCheckbox, excludeCheckbox, characterLimit])
 
-  const includeSymbolinPassword = (originalBaseWord, randomNumber) => {
+  const checkRandomIndex = (excludeArray) => {
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * characterLimit);
+      console.log(randomIndex)
+    }
+    while(excludeArray.includes(randomIndex) === true);
+    return randomIndex;
+  }
+
+  const includeSymbolInPassword = (originalBaseWord, randomIndex) => {
     const symbols = ["@", "#", "$", "%"];
     const randomSymbol = symbols[Math.floor(Math.random() * 4)];
-    return replacecharacter(originalBaseWord, randomNumber, randomSymbol);
+    return replacecharacter(originalBaseWord, randomIndex, randomSymbol);
+  }
+
+  const includeNumbersInPassword = (originalBaseWord, randomIndex) => {
+    const numbers = [1,2,3,4,5,6,7,8,9];
+    let randomNumber  = numbers[Math.floor(Math.random() * numbers.length)]
+    return replacecharacter(originalBaseWord, randomIndex, randomNumber);
   }
 
   const replacecharacter = (originalWord, index, replacement) => {
     return originalWord.substring(0, index) + replacement + originalWord.substring(index + 1);
   }
 
-  const getRandomCharacter = ()=> {
-    return Math.floor(Math.random() * characterLimit)
-  }
+  // const getRandomCharacter = ()=> {
+  //   return Math.floor(Math.random() * characterLimit);
+  // }
 
   return (
     <main>
