@@ -10,7 +10,7 @@ describe("primary screen UI elements are there", () => {
   test("that a character range control and the current number of characters are displayed", () => {
     render(<App />);
     screen.getByLabelText('password character range')
-    screen.getByText(/12 characters/i);
+    screen.getByText(/10 characters/i);
   })
 
   test("that all checkboxes are visible", () => {
@@ -26,6 +26,6 @@ describe("primary screen UI elements are there", () => {
 xdescribe("the checkboxes changes the displayed password", () => {
   test("that all checkboxes changes the displayed password based on its critera", () => {
     render(<App />);
-    
+
   });
 });

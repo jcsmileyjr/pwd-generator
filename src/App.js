@@ -35,17 +35,24 @@ function App() {
   const [lowerCaseCheckbox, setLowerCaseCheckbox] = useState(false);
   const [upperCaseCheckbox, setUpperCaseCheckbox] = useState(false);
   const [excludeCheckbox, setExcludeCheckbox] = useState(false);
-  const [displayedPassword, setDisplayedPassword] = useState("HelloWorld");
+  const [displayedPassword, setDisplayedPassword] = useState("Test");
   const [characterLimit, setCharacterLimit] = useState(10);
 
   useEffect(() => {
     // Returns a base word based on the character limit and revised based on the value of checkboxes 
     const updatedPassword = () => {
       let baseword = 'excommunication';
-      console.log(baseword.length);
+      let excludedPositions = [];
+      
       //return number of letters based on the characterLimit state
       baseword = baseword.substring(0, characterLimit);
-  
+
+      // if the symbol checkbox is checked, randomly change one position with a random symbol. Save that position to be exclude later
+      if(symbolCheckbox){
+        let randomIndex = getRandomCharacter();
+        excludedPositions.push(randomIndex);
+        baseword = includeSymbolinPassword(baseword, randomIndex);
+      }
       setDisplayedPassword(baseword);
     }
 
@@ -53,6 +60,19 @@ function App() {
     
   },[symbolCheckbox, numberCheckbox, lowerCaseCheckbox, upperCaseCheckbox, excludeCheckbox, characterLimit])
 
+  const includeSymbolinPassword = (originalBaseWord, randomNumber) => {
+    const symbols = ["@", "#", "$", "%"];
+    const randomSymbol = symbols[Math.floor(Math.random() * 4)];
+    return replacecharacter(originalBaseWord, randomNumber, randomSymbol);
+  }
+
+  const replacecharacter = (originalWord, index, replacement) => {
+    return originalWord.substring(0, index) + replacement + originalWord.substring(index + 1);
+  }
+
+  const getRandomCharacter = ()=> {
+    return Math.floor(Math.random() * characterLimit)
+  }
 
   return (
     <main>
